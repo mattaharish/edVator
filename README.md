@@ -83,7 +83,7 @@ Setting Prerequisites
 Setting up the local server
 
 ```
-1) Clone the repository from 
+1) Clone the repository from https://github.com/mattaharish/edVator
 2) Open terminal and change its location the where you cloned the repo
 3) Run command npm install
 4) After all dependencies are installed. Run command : node app.js, in your terminal
