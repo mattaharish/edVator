@@ -1,0 +1,64 @@
+<br>
+<br>
+
+<!-- Modal -->
+<div class="modal fade preview-modal" id="exampleModal" tabindex="-1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Test Details</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div ng-hide="test.modal">
+                    <p>Test Title : {{test.data.title}}</p>
+                    <p>Description : {{test.data.description}}</p>
+                    <p>Number of Questions : {{test.data.count}}</p>
+                    <p>Time Limit : {{test.data.time}}</p>
+                    <p>instructions : {{test.data.instructions}}</p>
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" id="close" ng-hide="test.modal" class="btn btn-primary">Continue</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- End Modal -->
+<br>
+<div class="container">
+    <div class="row h-100">
+        <div ng-repeat="t in test.availableTests track by $index" class="col-lg-4 col-md-4 col-xs-4">
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h5>
+                        {{t.title}}
+                        <h5>
+                </div>
+                <div class="card-body">
+                    <h6 class="card-title">Number of Questions : {{t.count}}</h6>
+                    <p class="card-text">Time for Test : {{t.time}} minutes</p>
+                    <a ng-click="test.testData(t)" href="" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary">Take Test</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+<br>
+<script>
+    $("#close").click(function () {
+        $('#exampleModal').modal('hide');
+        $('body').removeClass('modal-open');
+        $('.modal-backdrop').remove();
+        window.location.href = "#/testrun";
+    });
+</script>

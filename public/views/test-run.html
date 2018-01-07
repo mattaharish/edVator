@@ -1,0 +1,128 @@
+<br>
+<br>
+
+<div ng-hide="run.confirm" class="container">
+    <div class="row h-100">
+        <div class="col-lg-8 mx-auto">
+            <div class="card border-info mb-3">
+                <div class="card-header bg-secondary mb-3">
+                    <h6 class="text-white">Time Remaining
+                        <span class="float-right">{{run.Minutes}} Minutes {{run.Counter}} Seconds</span>
+                    </h6>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="form-group">
+
+                            <label for="exampleInputEmail1">Question {{run.i}}</label>
+                            <p>{{run.question}}</p>
+
+                        </div>
+
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">
+                                <div class="radio">
+                                    <input type="radio" ng-model="run.answer" name="optradio" value="A"> &nbsp {{run.option1}}</label>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="radios-0">
+                                <div class="radio radio-primary">
+                                    <input type="radio" ng-model="run.answer" name="optradio" value="B"> &nbsp {{run.option2}}</label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">
+                                <div class="radio">
+                                    <input type="radio" ng-model="run.answer" name="optradio" value="C"> &nbsp {{run.option3}}</label>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">
+                                <div class="radio">
+                                    <input type="radio" ng-model="run.answer" name="optradio" value="D"> &nbsp {{run.option4}}</label>
+                            </div>
+
+                        </div>
+
+                    </form>
+                </div>
+                <div class="card-footer text-muted">
+                    <div class="container">
+                        <div class="row h-100">
+                            <div ng-if="run.i!=1" class=" col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <a ng-href="">
+                                    <button type="button" ng-click="run.previousQuestion()" class="btn btn-success">
+                                        < Prev</button>
+                                </a>
+                            </div>
+                            <div ng-if="run.i!=run.data.count" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <a ng-href="">
+                                    <button type="button" ng-click="run.nextQuestion()" class="float-right btn btn-success"> Next > </button>
+                                </a>
+                            </div>
+                            <div ng-if="run.i==run.data.count" class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <a ng-href="">
+                                    <button type="button" ng-click="run.testSubmit()" class="float-right btn btn-danger"> Submit </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div ng-show="run.confirm" class="container">
+    <div class="row h-100">
+        <div class="col-lg-8 mx-auto">
+            <div class="card border-info mb-3">
+                <div class="card-header bg-secondary mb-3">
+                    <h6 class="text-white">Test Submitted</h6>
+                </div>
+                <div class="card-body">
+                    <h5>Thanks For Taking Test</h5>
+                    <br>
+                    <p>Number of Questions : {{run.data.count}}</p>
+                    <p>Number of Correct Answers : {{run.score}}</p>
+                    <p>Percentage : {{run.score/run.data.count * 100}}</p>
+                </div>
+                <div class="card-footer text-muted">
+                    <div class="container">
+                        <div class="row h-100">
+                            <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <a ng-href="#/homepage">
+                                    <button type="button" class="btn btn-success">
+                                        Go to Home Page</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    
+    if (window.performance) {
+        console.info("window.performance work's fine on this browser");
+    }
+    if (performance.navigation.type == 1) {
+        alert("Sorry, You refreshed the page :(");
+        console.info("This page is reloaded");
+        window.location.href = "#/homepage"
+
+    } else {
+        console.info("This page is not reloaded");
+    }
+</script>
+<br>
+<br>

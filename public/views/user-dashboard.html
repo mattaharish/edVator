@@ -1,0 +1,129 @@
+<br>
+<br>
+<br>
+<div class="container">
+    <div class="row h-100">
+        <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <a ng-href="#/available-tests">
+                <button type="button" class="btn btn-success">
+                    Take A Test</button>
+            </a>
+        </div>
+    </div>
+</div>
+<br>
+
+<div class="container">
+    <div class="row h-100">
+        <div class="col-lg-8 col-md-8 col-xs-8">
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h5> User Statistics
+                        <h5>
+                </div>
+                <div class="card-body">
+                    <h6 class="card-title">
+                        <b>
+                            <span style="color:#00838F">Number of Tests Taken : {{test.testsCount}}</span>
+                        </b>
+                    </h6>
+                    <p class="card-text">
+                        <b ng-if="test.testsCount==0">
+                            <span style="color:#00838F">Highest Score Among all tests taken: Not available</span>
+                        </b>
+                        <b ng-if="test.testsCount!=0">
+                            <span style="color:#00838F">Highest Score Among all tests taken:
+                                <span style="color:#607D8B">{{test.max}}</span>
+                            </span>
+                        </b>
+                    </p>
+                    <p class="card-text">
+                        <b ng-if="test.testsCount==0">
+                            <span style="color:#00838F">Least Score Among all tests attempted: Not Available </span>
+                        </b>
+                        <b ng-if="test.testsCount!=0">
+                            <span style="color:#00838F">Least Score Among all tests attempted:
+                                <span style="color:#607D8B">{{test.min}}</span>
+                            </span>
+                        </b>
+                    </p>
+                    <p class="card-text">
+                        <b>
+                            <span style="color:#00838F">Average Performance :
+                                <span style="color:#607D8B">{{test.avg}} % </span>
+                            </span>
+                        </b>
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<div class="modal fade preview-modal" id="exampleModal" tabindex="-1">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Test Details</h5>
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <center>
+                        <h4> You have already taken the test !</h4>
+                        <h3> THANK YOU :) </h3>
+                        <h5>Number of Questions : {{test.qCount}}</h5>
+                        <h5 style="color:#CB2027"> Number of Correct Answers(Score) : {{test.testScore}}</h5>
+                        <h6>Percentage : {{test.testScore/test.qCount * 100}}</h6>
+                    </center>
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<center ng-if="test.testsCount!=0">
+    <div style="width:600px;height:400px">
+        <canvas id="line" class="chart chart-line" chart-data="data" chart-labels="labels" chart-series="series" chart-options="options">
+        </canvas>
+    </div>
+    <b>Average Performance</b>
+    <div class="chart" pie-chart-progress-bar="Percent"></div>
+
+</center>
+
+
+<div class="container">
+    <h4>Tests Taken By User</h4>
+    <h5 ng-if="test.testsCount==0">You have not taken any Tests Yet :(</h5>
+    <div class="row h-100">
+        <div ng-repeat="t in test.teststaken" class="col-lg-4 col-md-4 col-xs-4">
+            <div class="card mb-3">
+                <div class="card-header">
+                    <h5>
+                        {{t.title}}
+                        <h5>
+                </div>
+                <div class="card-body">
+                    <h6 class="card-title">Number of Questions : {{t.questions}}</h6>
+                    <p class="card-text">Time for Test : {{t.time}} minutes</p>
+                    <a ng-click="test.testScoreInfo(t)" href="" data-toggle="modal" data-target="#exampleModal" class="btn btn-primary">Score</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+<br>

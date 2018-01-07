@@ -1,0 +1,56 @@
+<br><br>
+
+<div class="container">
+    <div class="row h-100">
+        <div class="col-lg-8 mx-auto">
+            <div class="card border-info mb-3">
+                <div class="card-header bg-secondary mb-3">
+                    <h6 class="text-white">Test Statistics</h6>
+                </div>
+                <div class="card-body">
+                    
+                    <p>Number of users attempted the test : <b><span style="color:#00838F">{{stat.count}}</span></b></p>
+                    <p>Highest Score of Test : <b><span style="color:#00838F">{{stat.max}}</span></b></p>
+                    <p>Least Score of Test : <b><span style="color:#00838F">{{stat.min}}</span></b></p>
+                    <p>Average Score of Test : <b><span style="color:#00838F">{{stat.avg}}</span></b></p>
+                </div>
+                <div class="card-footer text-muted">
+                    <div class="container">
+                        <div class="row h-100">
+                            <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <a ng-href="#/dashboard">
+                                    <button type="button" class="btn btn-success">
+                                        Go to Home Page
+                                    </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <table class="table table-sm">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Score</th>
+            <th scope="col">Taken On</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="x in stat.info">
+            <th scope="row">{{$index+1}}</th>
+            <td>{{x.username}}</td>
+            <td>{{x.email}}</td>
+            <td>{{x.score}}</td>
+            <td>{{x.takenat | date:"medium"}}</td>
+          </tr>
+        </tbody>
+      </table>
+</div>
+
+<br><br><br><br>

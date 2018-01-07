@@ -1,0 +1,45 @@
+<br>
+<br>
+
+<div class="container">
+    <div class="row h-100">
+        <div class="col-lg-10 ">
+            <center>
+                <h4 ng-if="!stat.userdata">User Has Not Attempted Any Tests Yet :(</h4>
+            </center>
+            
+            <div ng-if="stat.userdata" class="card mb-3">
+                <div class="card-header">
+                    <h5> User Statistics
+                        <h5>
+                </div>
+                <div class="card-body">
+                    <h6 class="card-title">
+                        <b>
+                            <span style="color:#00838F">Number of Tests Taken : <span style="color:#607D8B">{{stat.userdata.testcount}}</span></span>
+                        </b>
+                    </h6>
+                    <p class="card-text">
+                        <b>
+                            <span style="color:#00838F">Highest Score Among all tests taken: <span style="color:#607D8B">{{stat.userdata.max}}</span></span>
+                        </b>
+                    </p>
+                    <p class="card-text">
+                        <b>
+                            <span style="color:#00838F">Least Score Among all tests attempted: <span style="color:#607D8B">{{stat.userdata.min}}</span> </span>
+                        </b>
+                    </p>
+                    <p class="card-text">
+                        <b>
+                            <span style="color:#00838F">Average Performance : <span style="color:#607D8B">{{stat.userdata.avg}} % </span></span>
+                        </b>
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<br>

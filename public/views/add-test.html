@@ -1,0 +1,100 @@
+<br>
+<br>
+<center>
+    <h4>{{test.message}}</h4>
+</center>
+<div ng-show="test.show" class="container">
+    <div class="row h-100">
+        <div class="col-lg-8 mx-auto">
+            <div class="card">
+                <div class="card-header">Create Test</div>
+                <div class="card-body">
+                    <form ng-submit="test.addTest(test.tid)">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Title</label>
+                            <input type="text" class="form-control" ng-model="test.title" placeholder="Title" required>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Description</label>
+                            <textarea class="form-control" rows="3" ng-model="test.description" placeholder="Description.." required></textarea>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Number of Questions</label>
+                            <input type="number" class="form-control" ng-model="test.count" placeholder="5 10 15" required>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Time Limit</label>
+                            <input type="text" class="form-control" ng-model="test.time" placeholder="Time in minutes" required>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Instructions</label>
+                            <textarea class="form-control" rows="3" ng-model="test.instructions" placeholder="Instructions.." required></textarea>
+
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" style="width:150px" class="btn btn-primary" value="Save and Go">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br><br><br>
+<div ng-hide="test.show" class="container">
+    <div class="row h-100">
+        <div class="col-lg-8 mx-auto">
+            <div class="card">
+                <div class="card-header">Question {{test.index}}</div>
+                <div class="card-body">
+                    <form ng-submit="test.questionTracker()">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Question</label>
+                            <input type="text" class="form-control" ng-model="test.question" placeholder="Enter Question" required>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Option 1</label>
+                            <input type="text" class="form-control" ng-model="test.A" placeholder="Enter Option1" required>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Option 2</label>
+                            <input type="text" class="form-control" ng-model="test.B" placeholder="Enter Option2" required>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Option 3</label>
+                            <input type="text" class="form-control" ng-model="test.C" placeholder="Enter Option3" required>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Option 4</label>
+                            <input type="text" class="form-control" ng-model="test.D" placeholder="Enter Option4" required>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" style="color:green">Answer</label>
+                            <select class="form-control" ng-model="test.answer" required>
+                                <option>A</option>
+                                <option>B</option>
+                                <option>C</option>
+                                <option>D</option>
+                            </select>
+
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary" value="Save and Next">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br><br><br>

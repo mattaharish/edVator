@@ -1,0 +1,55 @@
+<br>
+<br>
+
+<div class="container">
+    <div class="row h-100">
+        <div class="clearfix col-lg-6">
+            <a ng-href="#/addtest">
+                <button type="button" class="float-right btn btn-secondary">Create New Test</button>
+            </a>
+        </div>
+        <div class="clearfix col-lg-6">
+            <a ng-href="#/allusers">
+                <button type="button" class="btn btn-success">All Users</button>
+            </a>
+        </div>
+    </div>
+</div>
+<br>
+<div class="container">
+    <div class="row h-100">
+        <div ng-repeat="t in test.alltests" class="col-lg-4 col-md-4 col-xs-4">
+            <div class="card mb-3">
+                <div class="card-header text-white bg-dark mb-3">
+                    <h5>
+                        {{t.title}}
+                        <h5>
+                </div>
+                <div class="card-body">
+                    <h6 class="card-title">Number of Questions : {{t.count}}</h6>
+                    <p class="card-text">Time for Test : {{t.time}} minutes</p>
+
+                </div>
+                <div class="card-footer text-muted">
+                    <div class="container">
+                        <div class="row h-100">
+                            <div class=" col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <a ng-href="#/testDetails">
+                                    <button type="button" ng-click="test.testData(t)" class="btn btn-info">
+                                        Test Details</button>
+                                </a>
+                            </div>
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <a ng-href="#/testStats">
+                                    <button type="button" ng-click="test.testData(t)" class="float-right btn btn-success"> Statistics </button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br><br><br>

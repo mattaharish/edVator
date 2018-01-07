@@ -1,0 +1,180 @@
+<br>
+<br>
+
+<div class="container">
+    <div class="row h-100">
+        <div class="clearfix col-lg-6">
+            <a ng-href="">
+                <button type="button" ng-click="test.deleteTest(test.data._id)" class="float-right btn btn-danger">Delete Test</button>
+            </a>
+        </div>
+        <div class="clearfix col-lg-6">
+            <a ng-href="">
+                <button type="button" ng-click="test.showQuestionForm()" class="btn btn-info">Add Question</button>
+            </a>
+        </div>
+    </div>
+</div>
+<br>
+<center>
+    <h4>{{test.message}}</h4>
+</center>
+<div ng-show="test.addQ" class="container">
+    <div class="row h-100">
+        <div class="col-lg-8 mx-auto">
+            <div class="card">
+                <div class="card-header">Question</div>
+                <div class="card-body">
+                    <form ng-submit="test.addQuestion(test.data._id)">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Question</label>
+                            <input type="text" class="form-control" ng-model="test.question" placeholder="Enter Question" required>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Option 1</label>
+                            <input type="text" class="form-control" ng-model="test.A" placeholder="Enter Option1" required>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Option 2</label>
+                            <input type="text" class="form-control" ng-model="test.B" placeholder="Enter Option2" required>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Option 3</label>
+                            <input type="text" class="form-control" ng-model="test.C" placeholder="Enter Option3" required>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Option 4</label>
+                            <input type="text" class="form-control" ng-model="test.D" placeholder="Enter Option4" required>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" style="color:green">Answer</label>
+                            <select class="form-control" ng-model="test.answer" required>
+                                <option>A</option>
+                                <option>B</option>
+                                <option>C</option>
+                                <option>D</option>
+                            </select>
+
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary" value="Add Question">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<div class="container">
+    <div class="row h-100">
+        <div class="col-lg-8 mx-auto">
+            <div class="card border-info mb-3">
+                <div class="card-header bg-secondary mb-3">
+                    <h6 class="text-white">Test Details</h6>
+                </div>
+                <div class="card-body">
+                    <form ng-submit="test.editTest(test.data._id)">
+                        <div class="form-group">
+
+                            <label for="exampleInputEmail1">Title</label>
+                            <input type="text" class="form-control " ng-model="test.data.title" placeholder="Title">
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Description</label>
+                            <textarea class="form-control ''" rows="3" ng-model="test.data.description" placeholder="Description.."></textarea>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Number of Questions</label>
+                            <input type="number" class="form-control " ng-model="test.data.count" placeholder="5 10 15">
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Time Limit</label>
+                            <input type="text" class="form-control " ng-model="test.data.time" placeholder="Time in minutes">
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Instructions</label>
+                            <textarea class="form-control " rows="3" ng-model="test.data.instructions" placeholder="Instructions.."></textarea>
+
+                        </div>
+
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary" value="Edit and Save">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+<div class="container">
+    <div class="row h-100">
+        <div ng-repeat="q in test.data.questions track by $index" class="col-lg-8 mx-auto">
+            <div class="card border-info mb-3">
+                <div class="card-header">
+                    Question {{$index+1}}
+                    <button type="button" ng-click="test.confirmDelete(test.data._id, q._id)" class="btn btn-danger float-right">Delete Question</button>
+                </div>
+                <div class="card-body">
+                    <form ng-submit="test.editQuestion(q._id, $index)">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Question</label>
+                            <input type="text" class="form-control" ng-model="test.data.questions[$index].question" placeholder="Enter Question" required>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Option 1</label>
+                            <input type="text" class="form-control" ng-model="test.data.questions[$index].A" placeholder="Enter Option1" required>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Option 2</label>
+                            <input type="text" class="form-control" ng-model="test.data.questions[$index].B" placeholder="Enter Option2" required>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Option 3</label>
+                            <input type="text" class="form-control " ng-model="test.data.questions[$index].C" placeholder="Enter Option3" required>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Option 4</label>
+                            <input type="text" class="form-control " ng-model="test.data.questions[$index].D" placeholder="Enter Option4" required>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" style="color:green">Answer</label>
+                            <select class="form-control " ng-model="test.data.questions[$index].answer" required>
+                                <option>A</option>
+                                <option>B</option>
+                                <option>C</option>
+                                <option>D</option>
+                            </select>
+
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-primary" value="Edit and Save">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <br>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<br>

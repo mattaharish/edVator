@@ -1,0 +1,1 @@
+var myApp = angular.module('edVator', ['ngRoute', 'angular-jwt','chart.js']);

@@ -1,0 +1,39 @@
+<br>
+<br>
+<div class="container">
+
+    <table class="table table-sm">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Mobile</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="x in stat.allusers">
+                <th scope="row">{{$index+1}}</th>
+                <td class="hover-style" ng-click="stat.getDetails(x.email)" ng-if="x.firstname">{{x.firstname+' '+x.lastname}}</td>
+                <td class="hover-style" ng-click="stat.getDetails(x.email)" ng-if="x.name">{{x.name}}</td>
+                <td>{{x.email}}</td>
+                <td ng-if="x.mobile">{{x.mobile}}</td>
+                <td ng-if="!x.mobile">NA</td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<style>
+    .hover-style:hover {
+        cursor: pointer;
+    }
+
+    .hover-style {
+        color: blue;
+        text-decoration: underline;
+    }
+</style>
+<br>
+<br>
