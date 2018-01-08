@@ -295,6 +295,8 @@ myApp.controller('testCtrl', ['$location', '$rootScope', '$scope', '$window', '$
         console.log("testt..");
         main.testScore = testdata.score;
         main.qCount = testdata.questions;
+        var per = (main.testScore/main.qCount)*100;
+        main.testPercent = Number((per).toFixed(2));
     };
 
     main.testsTakenByUser = function () {
