@@ -1,12 +1,14 @@
-myApp.controller('testStats', ['$location', '$rootScope', '$window', 'TestService', 'TestInfo', function ($location, $rootScope, $window, TestService, TestInfo) {
+myApp.controller('testStats', ['$location', '$window', '$rootScope', 'TestService', 'TestInfo', function ($location, $window, $rootScope, TestService, TestInfo) {
 
     var main = this;
+
+    main.data = [];
 
     const testDetails = () => {
         if (main.data) {
 
             TestService.testTakenByID(main.data._id).then(function successCallback(response) {
-                console.log(response);
+                //console.log(response);
                 main.info = response.data.data;
                 calculateMaxAndMinScore();
             }, function errorCallback(response) {
@@ -17,7 +19,7 @@ myApp.controller('testStats', ['$location', '$rootScope', '$window', 'TestServic
 
     main.get = function () {
         main.data = TestInfo.getData();
-        console.log(main.data);
+        //console.log(main.data);
         testDetails();
     };
     main.get();
@@ -38,19 +40,19 @@ myApp.controller('testStats', ['$location', '$rootScope', '$window', 'TestServic
         for (let i = 0; i < main.info.length; i++) {
             sum = sum + parseInt(main.info[i].score);
         }
-        console.log(sum);
-        main.avg = sum / main.count;
+        //console.log(sum);
+        main.avg = (sum / main.count).toFixed(2);
         main.max = max;
         main.min = min;
-        console.log(max + " " + min);
+        //console.log(max + " " + min);
     };
 
     const allUsers = () => {
         TestService.allUsers().then(function successCallback(response) {
-            console.log(response);
+            //console.log(response);
             main.allusers = response.data.data;
         }, function errorCallback(response) {
-            console.log(response);
+            //console.log(response);
             alert(response.message);
         });
     };
@@ -60,7 +62,7 @@ myApp.controller('testStats', ['$location', '$rootScope', '$window', 'TestServic
     main.getDetails = function (data) {
 
         TestService.userTestsByAdmin(data).then(function successCallback(response) {
-            console.log(response);
+            //console.log(response);
             main.takenTests = response.data.data;
             main.userMetrics();
         }, function errorCallback(response) {
@@ -71,7 +73,7 @@ myApp.controller('testStats', ['$location', '$rootScope', '$window', 'TestServic
     main.userMetrics = function () {
 
         main.testsCount = main.takenTests.length;
-        if (main.testsCount>0) {
+        if (main.testsCount > 0) {
             var sum = 0;
             var temp, temp1 = 0,
                 temp2 = 0;
@@ -90,31 +92,31 @@ myApp.controller('testStats', ['$location', '$rootScope', '$window', 'TestServic
                 }
                 sum = sum + temp;
             }
-            console.log(sum);
+            //console.log(sum);
             tempavg = (sum / main.testsCount);
-            main.avg = Number((tempavg).toFixed(1));
+            main.avg = Number((tempavg).toFixed(2));
+            $rootScope.Percent = main.avg;
+            //console.log($scope.Percent);
             main.max = main.takenTests[temp1].score + ' out of ' + main.takenTests[temp1].questions;
             main.min = main.takenTests[temp2].score + ' out of ' + main.takenTests[temp2].questions;
-            console.log(max + " " + min);
+            //console.log(max + " " + min);
             const data = {
                 testcount: main.testsCount,
                 max: main.max,
                 min: main.min,
                 avg: main.avg
             };
-            console.log(data);
+            //console.log(data);
             TestInfo.setUserStats(data);
             $location.path('/userStats');
-        }
-        
-        else{
+        } else {
             alert("User Has Not Attempted Any Tests :(")
         }
     };
 
     const getUserStats = function () {
         main.userdata = TestInfo.getUserStats();
-        console.log(main.userdata);
+        //console.log(main.userdata);
     };
 
     getUserStats();
